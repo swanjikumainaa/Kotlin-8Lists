@@ -6,26 +6,27 @@ fun main() {
 
     val heights = listOf(1.8, 1.6, 1.7, 1.75, 1.82)
     val (averageHeight, totalHeight) = getAverageAndTotalHeight(heights)
-    println("The average height is $averageHeight meters and the total height is $totalHeight meters.")
+    println(averageHeight)
+    println(totalHeight)
 
-    val people = listOf(
-        Person("John", 25, 1.75, 70.0),
-        Person("Mary", 30, 1.68, 60.0),
-        Person("Peter", 20, 1.80, 80.0),
-        Person("Lucy", 40, 1.65, 55.0)
+    val people = mutableListOf(
+        Person("John", 25, 122, 70.0),
+        Person("Mary", 30, 133, 60.0),
+        Person("Peter", 20, 180, 80.0),
+        Person("Lucy", 40, 165, 55.0)
     )
 
     val sortedPeople = sortPeopleByDescendingAge(people)
     println(sortedPeople)
 
-    val people = mutableListOf(
-        Person("John", 25, 1.75, 70.0),
-        Person("Mary", 30, 1.68, 60.0),
-        Person("Peter", 20, 1.80, 80.0),
-        Person("Lucy", 40, 1.65, 55.0)
+    val peopleB = mutableListOf(
+        Person("John", 25, 122, 70.0),
+        Person("Mary", 30, 133, 60.0),
+        Person("Peter", 20, 180, 80.0),
+        Person("Lucy", 40, 165, 55.0)
     )
 
-    addNewPeopleToList(people)
+    addPeopleToList(people)
     println(people)
 
     val cars = listOf(
@@ -35,13 +36,7 @@ fun main() {
     )
 
     val averageMileage = calculateAverageMileage(cars)
-    println("The average mileage is: $averageMileage") // prints: The average mileage is: 15000.0
-
-
-
-
-
-
+    println( averageMileage)
 
 }
 
@@ -71,7 +66,7 @@ fun getAverageAndTotalHeight(heights: List<Double>): Pair<Double, Double> {
 
 //3. Given a list of Person objects, each with the attributes, name, age,
 //height and weight. Sort the list in order of descending age (2 points)
-data class Person(val name: String, val age: Int, val height: Double, val weight: Double)
+data class Person(val name: String, val age: Int, val height:Int, val weight: Double)
 
 fun sortPeopleByDescendingAge(people: List<Person>): List<Person> {
     return people.sortedByDescending { it.age }
@@ -81,11 +76,11 @@ fun sortPeopleByDescendingAge(people: List<Person>): List<Person> {
 //4. Given a list similar to the one above, write a function in which you will
 //create 2 more people objects and add them to the list at one go.
 //(1 points)
-data class Person(val name: String, val age: Int, val height: Double, val weight: Double)
+data class PersonB(val name: String, val age: Int, val height:Int, val weight: Double)
 
-fun addNewPeopleToList(people: MutableList<Person>) {
-    val newPerson1 = Person("Alice", 28, 1.72, 65.0)
-    val newPerson2 = Person("Bob", 32, 1.85, 85.0)
+fun addPeopleToList(people: MutableList<Person>) {
+    val newPerson1 = Person("Ariah", 28, 152, 65.0)
+    val newPerson2 = Person("Brian", 32, 185, 85.0)
     people.addAll(listOf(newPerson1, newPerson2))
 }
 
@@ -100,5 +95,5 @@ data class Car(val registration: String, val mileage: Double)
 
 fun calculateAverageMileage(cars: List<Car>): Double {
     val totalMileage = cars.fold(0.0) { acc, car -> acc + car.mileage }
-    return totalMileage / cars.size
+    return totalMileage
 }
